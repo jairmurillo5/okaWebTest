@@ -1,6 +1,9 @@
 import time
 import logging
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
 from select import select
 
@@ -81,6 +84,65 @@ class Funciones_Globales():
         btn_editar=driver.find_element("xpath", "//i[contains(@class,'oxd-icon bi-trash')]")
         if btn_editar.is_displayed() and btn_eliminar.is_displayed():
             logging.info("El usuario ADMIN tiene los privilegios de editar y eliminar")
+
+
+    def add_us(self):
+        driver = self.driver
+        btn_Admin= driver.find_element("xpath", "(//span[contains(.,'Admin')])[1]")
+        btn_Admin.click()
+        time.sleep(2)
+
+        btn_add = driver.find_element("xpath", "//button[contains(.,'Add')]")
+        btn_add.click()
+        time.sleep(2)
+
+        btn_select= driver.find_element("xpath", "(//div[contains(.,'-- Select --')])[14]")
+        btn_select.click()
+        time.sleep(2)
+
+        us_role = driver.find_element("xpath", "(//div[contains(.,'Admin')])[17]")
+        us_role.click()
+        time.sleep(2)
+
+        inp_empl= driver.find_element("xpath", "//input[@placeholder='Type for hints...']")
+        inp_empl.send_keys("joker john selvam")
+        time.sleep(5)
+
+        btn_select_2 = driver.find_element("xpath", "//div[@class='oxd-select-text-input'][contains(.,'-- Select --')]")
+        btn_select_2.click()
+        time.sleep(2)
+
+        us_status = driver.find_element("xpath", "(//div[contains(.,'Enabled')])[13]")
+        us_status.click()
+        time.sleep(2)
+
+        inp_username= driver.find_element("xpath", "(//input[@class='oxd-input oxd-input--active'])[2]")
+        inp_username.send_keys("HappyTesting")
+        time.sleep(2)
+
+        inp_pass = driver.find_element("xpath", "(//input[@type='password'])[1]")
+        inp_pass.send_keys("HappyTesting123")
+        time.sleep(2)
+
+        im_pass_ok= driver.find_element("xpath", "(//input[@autocomplete='off'])[3]")
+        im_pass_ok.send_keys("HappyTesting123")
+        time.sleep(2)
+
+        btn_save= driver.find_element("xpath", "//button[contains(.,'Save')]")
+        btn_save.click()
+        time.sleep(5)
+
+        #buscar a us creado
+        btn_Admin = driver.find_element("xpath", "(//span[contains(.,'Admin')])[1]")
+        btn_Admin.click()
+        time.sleep(4)
+
+
+
+
+
+
+
 
 
 

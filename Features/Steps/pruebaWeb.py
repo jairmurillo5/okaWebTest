@@ -49,3 +49,16 @@ def step_impl(context):
     g.filtrar_us_admin()
 
 
+
+@then(u'podré agregar a un usuario con rol ADMIN')
+def step_impl(context):
+    g = Funciones_Globales(context.driver)
+    g.add_us()
+
+
+@then(u'podre validar que fue exitosamente creado')
+def step_impl(context):
+    print(u'STEP: Then podre validar que fue exitosamente creado')
+
+
+
